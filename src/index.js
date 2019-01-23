@@ -5,9 +5,9 @@ const pull = require('pull-stream')
 const lp = require('pull-length-prefixed')
 const assert = require('assert')
 
-const BaseProtocol = require('./base')
+const BaseProtocol = require('libp2p-pubsub')
+const { message } = require('libp2p-pubsub')
 const utils = require('./utils')
-const pb = require('./message')
 const config = require('./config')
 
 const multicodec = config.multicodec
@@ -58,7 +58,7 @@ class FloodSub extends BaseProtocol {
     pull(
       conn,
       lp.decode(),
-      pull.map((data) => pb.rpc.RPC.decode(data)),
+      pull.map((data) => message.rpc.RPC.decode(data)),
       pull.drain(
         (rpc) => this._onRpc(idB58Str, rpc),
         (err) => this._onConnectionEnd(idB58Str, peer, err)

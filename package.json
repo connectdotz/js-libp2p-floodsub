@@ -61,6 +61,7 @@
     "debug": "^4.1.1",
     "length-prefixed-stream": "^1.6.0",
     "libp2p-crypto": "~0.16.0",
+    "libp2p-pubsub": "~0.0.1",
     "protons": "^1.0.1",
     "pull-pushable": "^2.2.0",
     "time-cache": "~0.3.0"
